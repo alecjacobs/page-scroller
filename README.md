@@ -1,4 +1,4 @@
-[# page-scroller](https://alecjacobs.github.io/page-scroller/)
+# [page-scroller](https://alecjacobs.github.io/page-scroller/)
 bookmarklet to autoscroll websites
 
 ![Neo scrolling](neo-scrolling.gif)
