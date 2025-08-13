@@ -7,8 +7,10 @@ const path = require('path');
 const jsCode = fs.readFileSync('page-scroller.js', 'utf8').trim();
 
 // Create bookmarklet by wrapping in IIFE and URL encoding
-const bookmarklet = `javascript:(function(){${jsCode}})()`;
-const encodedBookmarklet = encodeURIComponent(bookmarklet).replace(/'/g, '%27');
+const jsFunction = `(function(){${jsCode}})()`;
+const encodedJs = encodeURIComponent(jsFunction).replace(/'/g, '%27');
+const bookmarklet = `javascript:${jsFunction}`;
+const encodedBookmarklet = `javascript:${encodedJs}`;
 
 console.log('Raw JavaScript code:');
 console.log(jsCode);

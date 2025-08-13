@@ -4,15 +4,30 @@
 <head>
   <meta charset="utf-8">
   <title>Page Scroller</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      color: #333;
+    }
+
+    h1 {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+  </style>
 </head>
 
 <body>
   <div class="container"></div>
-  <h1 id="page-scroller">page-scroller</h1>
+  <h1 id="page-scroller">Page Scroller</h1>
   <p>bookmarklet to autoscroll websites</p>
   <p><img src="/page-scroller/neo-scrolling.gif" alt="Neo scrolling"></p>
   <p>drag to your bookmark bar: <a
-      href="javascript%3A(function()%7Bif%20(window.scrollerId)%20%7B%0A%20%20scrollerStop()%0A%7D%20else%20%7B%0A%20%20window.scrollerStart%20%3D%20()%20%3D%3E%20%7B%20window.scrollerId%20%3D%20setInterval(()%20%3D%3E%20%7B%20scrollBy(0%2C%201)%20%7D%2C%2033)%20%7D%3B%0A%20%20window.scrollerStop%20%3D%20()%20%3D%3E%20%7B%20clearInterval(scrollerId)%3B%20window.scrollerId%20%3D%20null%20%7D%3B%0A%20%20scrollerStart()%0A%7D%7D)()">page-scroller</a>
+      href="javascript:(function()%7Bif%20(window.scrollerId)%20%7B%0A%20%20cancelAnimationFrame(scrollerId)%3B%0A%20%20window.scrollerId%20%3D%20null%0A%7D%20else%20%7B%0A%20%20let%20last%20%3D%200%3B%0A%20%20(function%20scroll(t)%20%7B%0A%20%20%20%20if%20(t%20-%20last%20%3E%2033)%20%7B%0A%20%20%20%20%20%20scrollBy(0%2C%20(t%20-%20last)%20%2F%2070)%3B%0A%20%20%20%20%20%20last%20%3D%20t%0A%20%20%20%20%7D%0A%20%20%20%20window.scrollerId%20%3D%20requestAnimationFrame(scroll)%0A%20%20%7D)(performance.now())%0A%7D%7D)()">page-scroller</a>
   </p>
 </body>
 

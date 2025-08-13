@@ -3,7 +3,7 @@ bookmarklet to autoscroll websites
 
 ![Neo scrolling](neo-scrolling.gif)
 
-drag to your bookmark bar: [page-scroller](javascript%3A(function()%7Bif%20(window.scrollerId)%20%7B%0A%20%20scrollerStop()%0A%7D%20else%20%7B%0A%20%20window.scrollerStart%20%3D%20()%20%3D%3E%20%7B%20window.scrollerId%20%3D%20setInterval(()%20%3D%3E%20%7B%20scrollBy(0%2C%201)%20%7D%2C%2033)%20%7D%3B%0A%20%20window.scrollerStop%20%3D%20()%20%3D%3E%20%7B%20clearInterval(scrollerId)%3B%20window.scrollerId%20%3D%20null%20%7D%3B%0A%20%20scrollerStart()%0A%7D%7D)())
+drag to your bookmark bar: [page-scroller](javascript:(function()%7Bif%20(window.scrollerId)%20%7B%0A%20%20cancelAnimationFrame(scrollerId)%3B%0A%20%20window.scrollerId%20%3D%20null%0A%7D%20else%20%7B%0A%20%20let%20last%20%3D%200%3B%0A%20%20(function%20scroll(t)%20%7B%0A%20%20%20%20if%20(t%20-%20last%20%3E%2033)%20%7B%0A%20%20%20%20%20%20scrollBy(0%2C%20(t%20-%20last)%20%2F%2070)%3B%0A%20%20%20%20%20%20last%20%3D%20t%0A%20%20%20%20%7D%0A%20%20%20%20window.scrollerId%20%3D%20requestAnimationFrame(scroll)%0A%20%20%7D)(performance.now())%0A%7D%7D)())
 
 ## Development
 

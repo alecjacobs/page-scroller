@@ -1,7 +1,13 @@
 if (window.scrollerId) {
-  scrollerStop()
+  cancelAnimationFrame(scrollerId);
+  window.scrollerId = null
 } else {
-  window.scrollerStart = () => { window.scrollerId = setInterval(() => { scrollBy(0, 1) }, 33) };
-  window.scrollerStop = () => { clearInterval(scrollerId); window.scrollerId = null };
-  scrollerStart()
+  let last = 0;
+  (function scroll(t) {
+    if (t - last > 33) {
+      scrollBy(0, (t - last) / 70);
+      last = t
+    }
+    window.scrollerId = requestAnimationFrame(scroll)
+  })(performance.now())
 }
