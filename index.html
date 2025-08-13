@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Page Scroller</title>
+</head>
+
+<body>
+  <div class="container"></div>
+  <h1 id="page-scroller">page-scroller</h1>
+  <p>bookmarklet to autoscroll websites</p>
+  <p><img src="/page-scroller/neo-scrolling.gif" alt="Neo scrolling"></p>
+  <p>drag to your bookmark bar: <a
+      href="javascript%3A(function()%7Bif%20(window.scrollerId)%20%7B%0A%20%20scrollerStop()%0A%7D%20else%20%7B%0A%20%20window.scrollerStart%20%3D%20()%20%3D%3E%20%7B%20window.scrollerId%20%3D%20setInterval(()%20%3D%3E%20%7B%20scrollBy(0%2C%201)%20%7D%2C%2033)%20%7D%3B%0A%20%20window.scrollerStop%20%3D%20()%20%3D%3E%20%7B%20clearInterval(scrollerId)%3B%20window.scrollerId%20%3D%20null%20%7D%3B%0A%20%20scrollerStart()%0A%7D%7D)()">page-scroller</a>
+  </p>
+</body>
+
+</html>
